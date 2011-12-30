@@ -1,0 +1,63 @@
+This Is An Updated (And Upgraded) Version Of The Siri Server From Applidium Cracking Siri, Along With An Updated, Better tcpProxy.rb File.
+
+To Get Siri On Your iPhone 3GS Or 4 (Or iPod Touch 4) Follow These Steps:
+1. Download The Spire Tweak From Cydia On The Device You Want To Run Siri On
+2. On Your Desired Server Machine, Download This Repository Like This:
+# git clone git://github.com/firebolt55439/SiriKeyServer.git
+Then:
+# sudo ruby siri.rb
+--> Or If You Have RVM Installed:
+# rvmsudo ./siri.rb
+
+3. On Your Desired Server Machine, Configure A Dns Server (dns.py, dnsmasq, bind9, etc.) to forward guzzoni.apple.com
+To Your Computers' IP With The siri.rb File Running
+4. Download And Install n00neimp0rtant's Tweak (Sirious) And Install It On Your Jailbroken Device. Respring Your Device ASAP! 
+(This will be the device that you will run Siri on)
+5. Run This Command On Your Siri Server:
+# sudo ruby siri.rb > keys.txt
+--> Or If You Have RVM Installed:
+# rvmsudo siri.rb > keys.txt
+
+6. With The 4[S], Configure It To Connect To Your DNS Server, And Use Siri.
+7. Quit The siri.rb y Pressing Control C. Your Keys Are Saved In The keys.txt file.
+8. Download n00neimp0rtant ruby convert.rb (or whatever it's called) file to your server
+9. Edit It And Paste Your Session Validation Data.
+10. Record The Output Of It, And SSH Into Your Jailbroken iPhone and paste in all the data (X-ace-host, aced, etc.) in:
+/var/mobile/Library/Preferences/com.n00neimp0rtant.sirious.plist (Or Some File Named Like That).
+--> Make Sure The Session Validation Data Has Already Been Converted! If It Hasn't, Do Steps 8-9.
+11. Respring Your Jailbroken Device And Enjoy Siri!
+
+
+Here Are Some Errors You May Have And How To Fix Them:
+
+Error: 
+./siri.rb:40:in unbind': undefined method 'close' for nil:NilClass (NoMethodError)
+Or:
+./siriServer.rb:40:in unbind': undefined method 'close' for nil:NilClass (NoMethodError)
+If You're Using The Applidium Cracking Siri Tools.
+
+Fix:
+This Error Is Related To The @ztream.close Line Where @ztream Is Zlib::Inflate:New.
+Zlib::Inflate:New Is A Class For Decompressing Zlib Compressed Data. This Error Does Not Have A 100%-Fix-Guarantee Solution, But I Think You Should Try These Steps:
+
+If You're Using The Server To Grab Keys From An iPhone 4 And You're Getting The Above Error, Download The sirifori4.rb Instead Of The siri.rb Or siriServer.rb File And Run It.
+The Files Are Located In This Project. 
+
+If You Have An iPhone 4[S] And You're Getting The Above Error, Do These Steps:
+1. Download iBackupBot Backup Reading Utility For Your Operating System [Mac/PC]
+	(If You're On Linux, Then Use A Windows Or Mac Computer To Do These Steps)
+2. Open This File: /var/mobile/Library/Preferences/com.apple.assistant.plist In A Text Editor. (Notepad, TextEdit, Etc. But NOT Microsoft Word)
+3. Edit Out The Hostname (https://guzzoni.apple.com) And Replace It With Your Proxy Servers IP (ie: https://YOUR_IP_HERE:443) 
+	Remember To Include The :443 At The End Of The URL!!!!
+4. Reboot Your iPhone 4[S] And Get The siri.rb File Ready [Start It].
+5. Try Siri From Somewhere [Notes, Mail, etc.] And Watch As The Keys Are Printed Out!
+
+Error:
+start_tcp_server': no acceptor (RuntimeError)
+
+Fix:
+You Forgot To Use Sudo (No Administrative/Root Privileges) :
+Do This: 
+# sudo ruby siri.rb  
+Instead Of: 
+# ruby siri.rb
