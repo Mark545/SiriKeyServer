@@ -1,4 +1,5 @@
-This Is An Updated (And Upgraded) Version Of The Siri Server From Applidium Cracking Siri, Along With An Updated, Better tcpProxy.rb File.
+This Is An Updated (And Upgraded) Version Of The Siri Server From Applidium Cracking Siri.
+This Can Also Get Siri Working On Your iPhone 3GS or iPhone 4!
 
 To Get Siri On Your iPhone 3GS Or 4 (Or iPod Touch 4) Follow These Steps:
 1. Download The Spire Tweak From Cydia On The Device You Want To Run Siri On
@@ -6,7 +7,7 @@ To Get Siri On Your iPhone 3GS Or 4 (Or iPod Touch 4) Follow These Steps:
 # git clone git://github.com/firebolt55439/SiriKeyServer.git
 Then:
 # sudo ./install.sh 
-Which Installs All Dependencies For You.
+Which Does All The Configuring For You, And Generates The Certificates For SSL.
 
 3. On Your Desired Server Machine, Configure A Dns Server (dns.py, dnsmasq, bind9, etc.) to forward guzzoni.apple.com
 To Your Computers' IP With The siri.rb File Running
